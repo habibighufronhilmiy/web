@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Helooo</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+    body {
+      margin: 0;
+      background: linear-gradient(270deg, #f6d365, #fda085, #f6d365);
+      background-size: 600% 600%;
+      animation: gradientBG 20s ease infinite;
+      font-family: 'Poppins', sans-serif;
+      color: #4a2372;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    @keyframes gradientBG {
+      0%{background-position:0% 50%;}
+      50%{background-position:100% 50%;}
+      100%{background-position:0% 50%;}
+    }
+    h1 {
+      font-weight: 700;
+      font-size: 2.4em;
+      margin-bottom: 30px;
+      user-select: none;
+      text-shadow: 1px 1px 4px #ffe8c4;
+    }
+    input {
+      padding: 14px 20px;
+      font-size: 1.2em;
+      border-radius: 12px;
+      border: 2.5px solid #7c4dff;
+      width: 320px;
+      max-width: 90vw;
+      outline: none;
+      transition: border-color 0.3s;
+      text-align: center;
+      font-weight: 500;
+    }
+    input:focus {
+      border-color: #5400e0;
+      box-shadow: 0 0 8px #5400e0aa;
+    }
+    button {
+      margin-top: 25px;
+      background-color: #7c4dff;
+      border: none;
+      color: white;
+      padding: 16px 50px;
+      font-size: 1.25em;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(124,77,255,0.6);
+      transition: background-color 0.3s, transform 0.2s;
+      user-select: none;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+    button:hover {
+      background-color: #5400e0;
+      transform: scale(1.1);
+      box-shadow: 0 8px 22px rgba(84,0,224,0.8);
+    }
+    #hasil {
+      margin-top: 45px;
+      font-size: 1.4em;
+      font-weight: 600;
+      max-width: 450px;
+      min-height: 130px;
+      color: #3a1e6d;
+      background: #f3e9ffcc;
+      padding: 30px 30px;
+      border-radius: 25px;
+      box-shadow: 0 8px 18px rgba(124,77,255,0.3);
+      user-select: none;
+      white-space: pre-wrap;
+      min-height: 140px;
+      position: relative;
+    }
+    .cursor {
+      display: inline-block;
+      width: 6px;
+      background-color: #7c4dff;
+      margin-left: 3px;
+      animation: blink 1s steps(2, start) infinite;
+      vertical-align: bottom;
+      border-radius: 2px;
+    }
+    @keyframes blink {
+      0%, 50% {opacity: 1;}
+      51%, 100% {opacity: 0;}
+    }
+    #resetBtn {
+      margin-top: 15px;
+      background-color: #ff6f91;
+      border: none;
+      color: white;
+      padding: 12px 30px;
+      font-size: 1.05em;
+      border-radius: 20px;
+      cursor: pointer;
+      box-shadow: 0 5px 12px rgba(255,111,145,0.7);
+      user-select: none;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+    #resetBtn:hover {
+      background-color: #e05277;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Hallo, i hope u like it 💜✨</h1>
+
+  <input id="nama" type="text" placeholder="Tulis namamu di sini..." autocomplete="off" />
+  <button id="startBtn">Dapatkan Pesan Manis</button>
+  <div id="hasil"></div>
+  <button id="resetBtn" style="display:none;">Mulai Lagi</button>
+
+  <script>
+    const pesanManis = [
+      "setiap kali aku ingat kamu, hari-hariku jadi lebih indah. 😊",
+      "senyummu adalah alasan kecil aku untuk bahagia hari ini. 🌸",
+      "dengan kamu, segalanya terasa lebih ringan dan menyenangkan. 💫",
+      "kau hadir seperti sinar pagi yang menghangatkan hatiku. ☀",
+      "aku tak pernah lelah mengagumi kebaikan dan kelembutanmu. 💖",
+      "hadirmu adalah hadiah terindah yang aku syukuri setiap hari. 🎁",
+      "aku ingin menjadi alasan senyummu dan ketenangan hatimu. 🌷",
+      "di antara ribuan kata, kamu adalah kata yang paling indah. ✨",
+      "bersamamu, dunia terasa penuh warna dan cerita manis. 🌈",
+      "kau membuat setiap detik terasa berarti dan spesial. 💕"
+    ];
+
+    const penyemangat = [
+      "Ingat, kamu lebih kuat dari yang kamu kira. Aku percaya kamu! 💪",
+      "Jangan takut gagal, karena dari situ kita belajar dan tumbuh. 🌱",
+      "Setiap langkah kecilmu hari ini adalah kemajuan besar untuk masa depan. 🚀",
+      "Teruslah bermimpi dan jangan pernah ragu mengejar cita-citamu. 🌟",
+      "Kamu punya cahaya sendiri yang selalu bisa menerangi hari-hari gelap. 🕯",
+      "Kalau lelah, istirahatlah sejenak. Tapi jangan pernah berhenti maju. 🌄",
+      "Aku selalu ada untukmu, jadi jangan ragu untuk terus melangkah. 🤝",
+      "Setiap tantangan adalah kesempatan untuk menunjukkan betapa hebatnya kamu. 🏆",
+      "Hari ini adalah halaman baru, tulislah cerita terbaikmu. 📖",
+      "Tetap semangat dan yakinlah, semua hal baik akan datang padamu. 🌻"
+    ];
+
+    const hasilDiv = document.getElementById('hasil');
+    const namaInput = document.getElementById('nama');
+    const startBtn = document.getElementById('startBtn');
+    const resetBtn = document.getElementById('resetBtn');
+
+    function typingEffect(element, text, speed = 40, callback = null) {
+      element.textContent = "";
+      let i = 0;
+      const cursor = document.createElement("span");
+      cursor.className = "cursor";
+      element.appendChild(cursor);
+
+      function type() {
+        if (i < text.length) {
+          element.textContent = text.substring(0, i + 1);
+          element.appendChild(cursor);
+          i++;
+          setTimeout(type, speed);
+        } else {
+          if (callback) callback();
+        }
+      }
+      type();
+    }
+
+    function tampilkanPesan() {
+      const nama = namaInput.value.trim();
+      if (!nama) {
+        alert("Tolong isi namamu dulu ya, supaya lebih personal!");
+        return;
+      }
+      startBtn.disabled = true;
+      namaInput.disabled = true;
+      resetBtn.style.display = "none";
+      hasilDiv.textContent = "";
+      
+      const pesanIndex = Math.floor(Math.random() * pesanManis.length);
+      const semangatIndex = Math.floor(Math.random() * penyemangat.length);
+      
+      const pesan = `${nama}, ${pesanManis[pesanIndex]}`;
+      const semangat = penyemangat[semangatIndex];
+
+      typingEffect(hasilDiv, pesan, 45, () => {
+        setTimeout(() => {
+          typingEffect(hasilDiv, hasilDiv.textContent + "\n\n✨ " + semangat, 40, () => {
+            resetBtn.style.display = "inline-block";
+            startBtn.disabled = false;
+            namaInput.disabled = false;
+          });
+        }, 700);
+      });
+    }
+
+    function resetSemua() {
+      hasilDiv.textContent = "";
+      namaInput.value = "";
+      resetBtn.style.display = "none";
+      namaInput.disabled = false;
+      startBtn.disabled = false;
+      namaInput.focus();
+    }
+
+    startBtn.addEventListener('click', tampilkanPesan);
+    resetBtn.addEventListener('click', resetSemua);
+  </script>
+
+</body>
+</html>
